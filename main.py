@@ -36,6 +36,18 @@ def main():
         for obj in updatable:
             obj.update(dt)
 
+        print(f"Before collision check: Asteroids: {len(asteroids)}, Bullets: {len(shots)}")
+        for asteroid in asteroids:
+            bullet = pygame.sprite.spritecollideany(asteroid, shots)
+            if bullet:
+                print("Collision detected!")
+                asteroid.split()
+                bullet.kill()
+        print(f"After collision check: Asteroids: {len(asteroids)}, Bullets: {len(shots)}")
+
+
+            
+
         for asteroid in asteroids:
             if asteroid.collides_with(player):
                 print("Game over!")
